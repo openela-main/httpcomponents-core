@@ -3,13 +3,14 @@
 Name:           httpcomponents-core
 Summary:        Set of low level Java HTTP transport components for HTTP services
 Version:        4.4.13
-Release:        9%{?dist}
+Release:        11%{?dist}
 License:        ASL 2.0
 URL:            http://hc.apache.org/
 Source0:        https://www.apache.org/dist/httpcomponents/httpcore/source/httpcomponents-core-%{version}-src.tar.gz
 Patch0:         0001-Port-to-mockito-2.patch
 
 BuildArch:      noarch
+ExclusiveArch:  aarch64 ppc64le s390x x86_64 noarch
 
 BuildRequires:  maven-local-openjdk8
 %if %{with bootstrap}
@@ -95,6 +96,12 @@ done
 %doc README.txt RELEASE_NOTES.txt
 
 %changelog
+* Sat Nov 23 2024 Marián Konček <mkoncek@redhat.com> - 4.4.13-11
+- Add noarch to ExclusiveArch
+
+* Sat Nov 23 2024 Marián Konček <mkoncek@redhat.com> - 4.4.13-10
+- Disable building on i686
+
 * Thu Nov 21 2024 Marián Konček <mkoncek@redhat.com> - 4.4.13-9
 - Fix patch usage
 
